@@ -8,6 +8,7 @@
 import Foundation
 
 
+
 class CheckListItem{
     var text: String
     var checked: Bool
