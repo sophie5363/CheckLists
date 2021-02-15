@@ -62,24 +62,26 @@ class ChecklistViewController: UIViewController {
             
             cell.textLabel!.text = "texte de test"
             
+//            cell.textLabel!.text = tableauDeChecklistItems.text[indexPath.row]
+            
             return cell
 
         }
         
 //        func configureCheckmark(for cell: UITableViewCell, withItem item: CheckListItem){
 //
-//                cell.Checkmark!
+//            if CheckListItem.checked == true {
+//                cell.AccessoryType == checkmark
+//            }   else {
+//
+//            }
 //
 //            }
 //
 //        func configureText(for cell: UITableViewCell, withItem item: CheckListItem){
 //
-//                cell.textLabel!.text = [tableauDeChecklistItems objectAtIndex:indexPath.row]
 //
-//                let CheckListItems = objects[indexPath.row] as! String
-//                cell.textLabel!.text = object
-//
-//                cell.textLabel!.text = ChecklistItem.text
+//                cell.textLabel!.text = ChecklistItem[]
 //
 //            }
         
