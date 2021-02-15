@@ -7,14 +7,33 @@
 
 import Foundation
 
-
-
-class CheckListItem{
+class CheckListItem {
     var text: String
-    var checked: Bool
+//    let checked: Bool
     
-    init(text: String, checked: Bool){
+    let checked: Bool = {
+        
+            var checkedStatus = false
+            
+            return checkedStatus
+        }()
+    
+    init(text: String){
         self.text = text
-        self.checked = false
+
     }
+    
+    
+    //fonction permettant de toggle checkmark ou pas checkmark sur une ligne de la liste
+//    override func tableView(_ tableView: UITableView, didSelectRowAt: indexPath: IndexPath){
+//
+//        if tableView.cellForRow(at: indexPath)?.accessoryType == UITableViewCellAccessoryType.checkmark {
+//            tableView.cellForRow(at: indexPath)?.accessoryType == UITableViewCellAccessoryType.none
+//        } else {
+//            tableView.cellForRow(at: indexPath)?.accessoryType == UITableViewCellAccessoryType.checkmark
+//        }
+//    }
+    
+    
+    
 }

@@ -22,17 +22,15 @@ class ChecklistViewController: UIViewController {
 //        self.tableView.dataSource = self
         
         
-        let item1 = CheckListItem(text: "manger", checked: true)
-        let item2 = CheckListItem(text: "étudier", checked: true)
-        let item3 = CheckListItem(text: "travailler", checked: true)
+        let item1 = CheckListItem(text: "manger")
+        let item2 = CheckListItem(text: "étudier")
+        let item3 = CheckListItem(text: "travailler")
         tableauDeChecklistItems.append(item1)
         tableauDeChecklistItems.append(item2)
         tableauDeChecklistItems.append(item3)
     }
     
 }
-    
-    
     
     extension ChecklistViewController: UITableViewDelegate {
         
@@ -41,6 +39,8 @@ class ChecklistViewController: UIViewController {
             
             tableView.deselectRow(at: indexPath, animated: true)
         }
+        
+//        toggleChecked()
 
     }
     
@@ -60,9 +60,14 @@ class ChecklistViewController: UIViewController {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChecklistItem", for: indexPath)
             
+//          Trouver le moyen de récupérer le texte dans le tableau à 2D
+//            let cellText = self.tableauDeChecklistItems[indexPath.row]
+//            cell.textLabel!.text = cellText
+            
+            
             cell.textLabel!.text = "texte de test"
             
-//            cell.textLabel!.text = tableauDeChecklistItems.text[indexPath.row]
+//            cell.textLabel!.text = tableauDeChecklistItems[indexPath.row]
             
             return cell
 
