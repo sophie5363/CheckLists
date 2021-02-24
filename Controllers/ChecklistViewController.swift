@@ -55,45 +55,39 @@ class ChecklistViewController: UIViewController {
             
         }
         
-        //Fonction qui détermine le texte d'une cellule de la liste
+        //Fonction qui paramètre une cellule de la liste
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChecklistItem", for: indexPath)
+
+//            cell.textLabel!.text = "texte de test"
             
-//          Trouver le moyen de récupérer le texte dans le tableau à 2D
-//            let cellText = self.tableauDeChecklistItems[indexPath.row]
-//            cell.textLabel!.text = cellText
+            cell.textLabel?.text = tableauDeChecklistItems[indexPath.row].text
+        
             
-            
-            cell.textLabel!.text = "texte de test"
-            
-//            cell.textLabel!.text = tableauDeChecklistItems[indexPath.row]
-            
+        
             return cell
 
         }
         
-//        func configureCheckmark(for cell: UITableViewCell, withItem item: CheckListItem){
-//
+        func configureCheckmark(for cell: UITableViewCell, withItem item: CheckListItem){
+
 //            if CheckListItem.checked == true {
 //                cell.AccessoryType == checkmark
 //            }   else {
 //
 //            }
-//
-//            }
-//
-//        func configureText(for cell: UITableViewCell, withItem item: CheckListItem){
-//
-//
-//                cell.textLabel!.text = ChecklistItem[]
-//
-//            }
+
+            }
+
+        func configureText(for cell: UITableViewCell, withItem item: CheckListItem){
+
+            
         
         
     }
     
-    
+    }
 
 
 
