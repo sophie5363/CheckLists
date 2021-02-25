@@ -25,6 +25,13 @@ class ChecklistViewController: UITableViewController {
         tableauDeChecklistItems.append(item3)
     }
     
+    
+    @IBAction func addDummyTodo(_ sender: UIBarButtonItem) {
+        let itemDummy = CheckListItem(text: "Dummy")
+        tableauDeChecklistItems.append(itemDummy)
+        myTableView.insertRows(at: [IndexPath.init(row: self.tableauDeChecklistItems.count-1, section: 0)], with: .automatic)
+    }
+    
 }
 
 //MARK: - UITableViewDelegate

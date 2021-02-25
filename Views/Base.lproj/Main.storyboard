@@ -31,7 +31,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="CheckList" id="JOx-JX-jeH">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="6V4-Bh-wNL"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="6V4-Bh-wNL">
+                            <connections>
+                                <action selector="addDummyTodo:" destination="OJ0-EL-lzG" id="PIl-2p-wqP"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="myTableView" destination="lIT-B5-cAO" id="8sQ-bC-cUe"/>
