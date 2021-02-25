@@ -9,9 +9,7 @@ import UIKit
 
 
 class ChecklistViewController: UITableViewController {
-    
-    @IBOutlet var myTableView : UITableView!
-    
+
     var tableauDeChecklistItems = [CheckListItem]()
     
     override func viewDidLoad() {
@@ -29,7 +27,7 @@ class ChecklistViewController: UITableViewController {
     @IBAction func addDummyTodo(_ sender: UIBarButtonItem) {
         let itemDummy = CheckListItem(text: "Dummy")
         tableauDeChecklistItems.append(itemDummy)
-        myTableView.insertRows(at: [IndexPath.init(row: self.tableauDeChecklistItems.count-1, section: 0)], with: .automatic)
+        tableView.insertRows(at: [IndexPath(row: tableauDeChecklistItems.count-1, section: 0)], with: .automatic)
     }
     
 }
@@ -85,6 +83,20 @@ extension ChecklistViewController {
     
     func configureText(for cell: UITableViewCell, withItem item: CheckListItem){
         cell.textLabel?.text = item.text
+    }
+    
+    // Override to support conditional editing of the table view.
+        override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
+        {
+            return true
+        }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+      if editingStyle == .delete {
+
+        self.tableauDeChecklistItems.remove(at: indexPath.row)
+        self.tableView.deleteRows(at: [indexPath], with: .automatic)
+      }
     }
     
 }
