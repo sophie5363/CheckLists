@@ -59,13 +59,9 @@ class ChecklistViewController: UIViewController {
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChecklistItem", for: indexPath)
-
-//            cell.textLabel!.text = "texte de test"
             
             cell.textLabel?.text = tableauDeChecklistItems[indexPath.row].text
-        
-            
-        
+     
             return cell
 
         }
