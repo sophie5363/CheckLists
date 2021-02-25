@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Checklist View Controller-->
+        <!--CheckList-->
         <scene sceneID="Xpp-y3-6xr">
             <objects>
                 <tableViewController id="OJ0-EL-lzG" customClass="ChecklistViewController" customModule="CheckLists" customModuleProvider="target" sceneMemberID="viewController">
@@ -30,7 +30,9 @@
                             <outlet property="delegate" destination="OJ0-EL-lzG" id="V40-J4-jfd"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="JOx-JX-jeH"/>
+                    <navigationItem key="navigationItem" title="CheckList" id="JOx-JX-jeH">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="6V4-Bh-wNL"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="myTableView" destination="lIT-B5-cAO" id="8sQ-bC-cUe"/>
                     </connections>
