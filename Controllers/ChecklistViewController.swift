@@ -8,82 +8,85 @@
 import UIKit
 
 
-class ChecklistViewController: UIViewController {
+class ChecklistViewController: UITableViewController {
     
     @IBOutlet var myTableView : UITableView!
     
     var tableauDeChecklistItems = [CheckListItem]()
-   
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.tableView.delegate = self
-//        self.tableView.dataSource = self
-        
-        
         let item1 = CheckListItem(text: "manger")
         let item2 = CheckListItem(text: "étudier")
-        let item3 = CheckListItem(text: "travailler")
+        let item3 = CheckListItem(text: "travailler", checked: true)
         tableauDeChecklistItems.append(item1)
         tableauDeChecklistItems.append(item2)
         tableauDeChecklistItems.append(item3)
     }
     
 }
-    
-    extension ChecklistViewController: UITableViewDelegate {
-        
-        //Fonction qui permet de désélectionner une ligne sélectionnée
-        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            
-            tableView.deselectRow(at: indexPath, animated: true)
-        }
-        
-//        toggleChecked()
 
+//MARK: - UITableViewDelegate
+extension ChecklistViewController {
+    
+    //Fonction qui permet de désélectionner une ligne sélectionnée
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
+    //        toggleChecked()
+    
+}
+
+//MARK: - UITableViewDataSource
+extension ChecklistViewController {
     
     
-    extension ChecklistViewController: UITableViewDataSource {
+    //Fonction qui détermine le nombre de lignes dans la liste
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        
-        //Fonction qui détermine le nombre de lignes dans la liste
-        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            
-            return tableauDeChecklistItems.count
-            
-        }
-        
-        //Fonction qui paramètre une cellule de la liste
-        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ChecklistItem", for: indexPath)
-            
-            cell.textLabel?.text = tableauDeChecklistItems[indexPath.row].text
-     
-            return cell
-
-        }
-        
-        func configureCheckmark(for cell: UITableViewCell, withItem item: CheckListItem){
-
-//            if CheckListItem.checked == true {
-//                cell.AccessoryType == checkmark
-//            }   else {
-//
-//            }
-
-            }
-
-        func configureText(for cell: UITableViewCell, withItem item: CheckListItem){
-
-            
-        
+        return tableauDeChecklistItems.count
         
     }
     
+    //Fonction qui paramètre une cellule de la liste
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ChecklistItem", for: indexPath)
+        
+        configureCheckmark(for: cell, withItem: tableauDeChecklistItems[indexPath.row])
+        
+        configureText(for: cell, withItem: tableauDeChecklistItems[indexPath.row])
+        
+//        cell.textLabel?.text = tableauDeChecklistItems[indexPath.row].text
+        
+        return cell
+        
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        toggleChecked
+    }
+    
+    func configureCheckmark(for cell: UITableViewCell, withItem item: CheckListItem){
+        
+        //if item.checked == true
+        if item.checked {
+            cell.accessoryType = .checkmark
+          //cell.accessoryType = UITableViewCell.AccessoryType.checkmark
+        }   else {
+            cell.accessoryType = .none
+        }
+        
+    }
+    
+    func configureText(for cell: UITableViewCell, withItem item: CheckListItem){
+        cell.textLabel?.text = item.text
+        
+    }
+    
+}
 
 
 
