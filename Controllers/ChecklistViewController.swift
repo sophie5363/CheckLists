@@ -14,7 +14,6 @@ class ChecklistViewController: UITableViewController {
     
     var tableauDeChecklistItems = [CheckListItem]()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,20 +33,21 @@ extension ChecklistViewController {
     //Fonction qui permet de désélectionner une ligne sélectionnée
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let item = tableauDeChecklistItems[indexPath.row]
+        item.toggleChecked()
+        
+        tableView.reloadRows(at: [indexPath], with: .automatic)
     }
-    //        toggleChecked()
     
 }
 
 //MARK: - UITableViewDataSource
 extension ChecklistViewController {
     
-    
     //Fonction qui détermine le nombre de lignes dans la liste
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return tableauDeChecklistItems.count
-        
     }
     
     //Fonction qui paramètre une cellule de la liste
@@ -59,18 +59,13 @@ extension ChecklistViewController {
         
         configureText(for: cell, withItem: tableauDeChecklistItems[indexPath.row])
         
-//        cell.textLabel?.text = tableauDeChecklistItems[indexPath.row].text
-        
         return cell
         
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        toggleChecked
-    }
+
     
     func configureCheckmark(for cell: UITableViewCell, withItem item: CheckListItem){
-        
         //if item.checked == true
         if item.checked {
             cell.accessoryType = .checkmark
@@ -83,7 +78,6 @@ extension ChecklistViewController {
     
     func configureText(for cell: UITableViewCell, withItem item: CheckListItem){
         cell.textLabel?.text = item.text
-        
     }
     
 }
