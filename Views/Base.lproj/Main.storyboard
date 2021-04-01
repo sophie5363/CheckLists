@@ -60,18 +60,16 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rhD-9t-5cu">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rhD-9t-5cu">
+                                                    <rect key="frame" x="20" y="11" width="374" height="34"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="textFieldWrittenText:" destination="9yn-wx-8zL" eventType="editingDidEnd" id="L2P-Yg-KpA"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstItem="rhD-9t-5cu" firstAttribute="leading" secondItem="2jb-jx-uK2" secondAttribute="leading" id="3Dk-W3-CfT"/>
-                                                <constraint firstAttribute="trailing" secondItem="rhD-9t-5cu" secondAttribute="trailing" id="B8v-fX-Hmd"/>
-                                                <constraint firstAttribute="bottom" secondItem="rhD-9t-5cu" secondAttribute="bottom" id="K8c-al-he8"/>
-                                                <constraint firstItem="rhD-9t-5cu" firstAttribute="top" secondItem="2jb-jx-uK2" secondAttribute="top" id="xlN-Yd-WgH"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -94,6 +92,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableViewCellText" destination="rhD-9t-5cu" id="1s4-e1-Zsx"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bx4-Fw-dci" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

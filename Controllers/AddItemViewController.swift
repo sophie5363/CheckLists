@@ -14,14 +14,15 @@ class AddItemViewController: UITableViewController {
 
     }
     
+    @IBOutlet weak var tableViewCellText: UITextField!
     
-
-    @IBAction func didTapCancelBtn(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
+    @IBAction func textFieldWrittenText(_ sender: UITextField) {
+        print(self.tableViewCellText.text!)
     }
     
 
     @IBAction func didTapDoneButton(_ sender: UIBarButtonItem) {
+        print(tableViewCellText.text!)
         dismiss(animated: true, completion: nil)
     }
 }
