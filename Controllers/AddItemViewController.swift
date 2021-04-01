@@ -26,6 +26,8 @@ class AddItemViewController: UITableViewController {
     
 
     @IBAction func didTapDoneButton(_ sender: UIBarButtonItem) {
+        func didEndOnExit(_ sender: UITextField) {
+        }
         print(tableViewCellText.text!)
         dismiss(animated: true, completion: nil)
     }

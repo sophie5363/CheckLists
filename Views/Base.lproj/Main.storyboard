@@ -64,7 +64,7 @@
                                                     <rect key="frame" x="20" y="11" width="374" height="34"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                     <connections>
                                                         <action selector="didEndOnExit:" destination="9yn-wx-8zL" eventType="editingDidEndOnExit" id="10w-5z-8hy"/>
                                                         <action selector="textFieldWrittenText:" destination="9yn-wx-8zL" eventType="editingDidEnd" id="L2P-Yg-KpA"/>
