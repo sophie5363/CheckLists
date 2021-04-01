@@ -14,6 +14,10 @@ class AddItemViewController: UITableViewController {
 
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        tableViewCellText.becomeFirstResponder()
+    }
+    
     @IBOutlet weak var tableViewCellText: UITextField!
     
     @IBAction func textFieldWrittenText(_ sender: UITextField) {
@@ -25,4 +29,10 @@ class AddItemViewController: UITableViewController {
         print(tableViewCellText.text!)
         dismiss(animated: true, completion: nil)
     }
+    
+   
+    
+    
+    
+    
 }
