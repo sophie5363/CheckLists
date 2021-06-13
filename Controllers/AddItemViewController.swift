@@ -24,8 +24,14 @@ class AddItemViewController: UITableViewController {
         tableViewCellText.becomeFirstResponder()
     }
     
+    //MARK: - IBOutlets
+    
+    
+    
     @IBOutlet weak var doneButton: UIBarButtonItem!
     @IBOutlet weak var tableViewCellText: UITextField!
+    
+    //MARK: - IBActions
     
     @IBAction func textFieldWrittenText(_ sender: UITextField) {
         print(self.tableViewCellText.text!)
