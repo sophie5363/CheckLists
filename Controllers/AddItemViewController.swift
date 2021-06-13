@@ -10,6 +10,7 @@ import UIKit
 protocol AddItemViewControllerDelegate : AnyObject {
     func addItemViewControllerDidCancel(_ controller: AddItemViewController)
     func addItemViewController(_ controller: AddItemViewController, didFinishAddingItem item: CheckListItem)
+    func addItemViewController(_ controller: AddItemViewController, didFinishEditingItem item: CheckListItem)
 }
 
 
@@ -22,11 +23,18 @@ class AddItemViewController: UITableViewController, AddItemViewControllerDelegat
         
     }
     
+    func addItemViewController(_ controller: AddItemViewController, didFinishEditingItem item: CheckListItem){
+        
+    }
+    
+            
+
+    
     
     
     //MARK: - PROPRIETES
     
-    var itemToEdit: UITableViewCell
+//    var itemToEdit: UITableViewCell
 
 
    
