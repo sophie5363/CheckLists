@@ -9,8 +9,15 @@ import UIKit
 
 
 class ChecklistViewController: UITableViewController {
+    
+    //MARK: - VARIABLES
 
     var tableauDeChecklistItems = [CheckListItem]()
+    
+    var delegate: AddItemViewControllerDelegate?
+    
+    
+    //MARK: - LIFECYCLE FUNCTIONS
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,16 +30,18 @@ class ChecklistViewController: UITableViewController {
         tableauDeChecklistItems.append(item3)
     }
     
+    //MARK: IBACTIONS
     
     @IBAction func addDummyTodo(_ sender: UIBarButtonItem) {
         let itemDummy = CheckListItem(text: "Dummy")
         tableauDeChecklistItems.append(itemDummy)
         tableView.insertRows(at: [IndexPath(row: tableauDeChecklistItems.count-1, section: 0)], with: .automatic)
     }
-    
+
 }
 
-//MARK: - UITableViewDelegate
+
+
 extension ChecklistViewController {
     
     //Fonction qui permet de désélectionner une ligne sélectionnée
@@ -46,14 +55,18 @@ extension ChecklistViewController {
     
 }
 
-//MARK: - UITableViewDataSource
+
 extension ChecklistViewController {
+    
+    
+                //MARK: - TABLEVIEW SETTINGS
     
     //Fonction qui détermine le nombre de lignes dans la liste
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return tableauDeChecklistItems.count
     }
+    
     
     //Fonction qui paramètre une cellule de la liste
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
@@ -68,8 +81,7 @@ extension ChecklistViewController {
         
     }
     
-
-    
+   
     func configureCheckmark(for cell: UITableViewCell, withItem item: CheckListItem){
         //if item.checked == true
         if item.checked {
@@ -80,6 +92,7 @@ extension ChecklistViewController {
         }
         
     }
+    
     
     func configureText(for cell: UITableViewCell, withItem item: CheckListItem){
         cell.textLabel?.text = item.text
@@ -101,7 +114,16 @@ extension ChecklistViewController {
     
 }
 
-extension ChecklistViewController {
+extension ChecklistViewController: AddItemViewControllerDelegate {
+    func addItemViewControllerDidCancel(_ controller: AddItemViewController) {
+        dismiss(animated: true, completion: nil)
+        
+    }
+    
+    func addItemViewController(_ controller: AddItemViewController, didFinishAddingItem item: CheckListItem) {
+        dismiss(animated: true, completion: nil)
+        
+    }
     
 }
 

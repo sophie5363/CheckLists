@@ -7,13 +7,29 @@
 
 import UIKit
 
-protocol AddItemViewControllerDelegate: class {
-    func AddItemViewControllerDidCancel(_ controller: AddItemViewController)
-    func AddItemViewControllerDone(_ controller: AddItemViewController, _ item: String)
+protocol AddItemViewControllerDelegate : AnyObject {
+    func addItemViewControllerDidCancel(_ controller: AddItemViewController)
+    func addItemViewController(_ controller: AddItemViewController, didFinishAddingItem item: CheckListItem)
 }
 
 
-class AddItemViewController: UITableViewController {
+class AddItemViewController: UITableViewController, AddItemViewControllerDelegate {
+    func addItemViewController(_ controller: AddItemViewController, didFinishAddingItem item: CheckListItem) {
+        
+    }
+    
+    func addItemViewControllerDidCancel(_ controller: AddItemViewController) {
+        
+    }
+    
+    
+    
+    //MARK: - VARIABLES
+
+   
+    
+    //MARK: - LIFECYCLE METHODS
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,25 +40,34 @@ class AddItemViewController: UITableViewController {
         tableViewCellText.becomeFirstResponder()
     }
     
-    //MARK: - IBOutlets
-    
-    
+    //MARK: - IBOUTLETS
+ 
     
     @IBOutlet weak var doneButton: UIBarButtonItem!
     @IBOutlet weak var tableViewCellText: UITextField!
     
-    //MARK: - IBActions
+    //MARK: - IBACTIONS
     
     @IBAction func textFieldWrittenText(_ sender: UITextField) {
         print(self.tableViewCellText.text!)
+        
     }
     
     
     @IBAction func done() {
-        
+        let controller = ChecklistViewController()
+        controller.delegate = self
         print(tableViewCellText.text!)
-        dismiss(animated: true, completion: nil)
+//        dismiss(animated: true, completion: nil)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ouvertureAddItemVC" {
+            let dest = segue.destination as! ChecklistViewController
+            dest.delegate = self
+        }
+    }
+    
 
 }
 
