@@ -83,10 +83,10 @@ extension ChecklistViewController {
     
    
     func configureCheckmark(for cell: UITableViewCell, withItem item: CheckListItem){
-        //if item.checked == true
+
         if item.checked {
             cell.accessoryType = .checkmark
-          //cell.accessoryType = UITableViewCell.AccessoryType.checkmark
+
         }   else {
             cell.accessoryType = .none
         }
