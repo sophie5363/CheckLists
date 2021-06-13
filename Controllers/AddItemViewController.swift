@@ -7,6 +7,12 @@
 
 import UIKit
 
+protocol AddItemViewControllerDelegate: class {
+    func AddItemViewControllerDidCancel(_ controller: AddItemViewController)
+    func AddItemViewControllerDone(_ controller: AddItemViewController, _ item: String)
+}
+
+
 class AddItemViewController: UITableViewController {
     
     override func viewDidLoad() {
@@ -34,17 +40,6 @@ class AddItemViewController: UITableViewController {
 
 }
 
-//extension AddItemViewController: UITextFieldDelegate {
-//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//
-//        if let oldString = textField.text {
-//            let resultingString = oldString.replacingCharacters(in: Range(range, in: oldString)!, with: string)
-//            doneButton.isEnabled = resultingString.count > 0
-//        }
-//
-//        return true
-//    }
-//}
 
 extension AddItemViewController : UITextFieldDelegate{
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
