@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yL9-iv-jnV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yL9-iv-jnV">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,10 +17,10 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="ChecklistItem" id="puM-KL-hJB">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.666667938232422"/>
+                                <rect key="frame" x="0.0" y="24.333333969116211" width="414" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="puM-KL-hJB" id="WvQ-3F-pVx">
-                                    <rect key="frame" x="0.0" y="0.0" width="370" height="43.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="373.33333333333331" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -66,8 +66,8 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                     <connections>
-                                                        <action selector="didEndOnExit:" destination="9yn-wx-8zL" eventType="editingDidEndOnExit" id="10w-5z-8hy"/>
-                                                        <action selector="textFieldWrittenText:" destination="9yn-wx-8zL" eventType="editingDidEnd" id="L2P-Yg-KpA"/>
+                                                        <action selector="done" destination="9yn-wx-8zL" eventType="editingDidEndOnExit" id="3T7-S5-hVM"/>
+                                                        <outlet property="delegate" destination="9yn-wx-8zL" id="lhk-To-MDu"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -82,18 +82,15 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="Sjs-qw-3sc">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="JTv-VH-BES">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="JTv-VH-BES"/>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="done" id="JV3-sZ-kqL">
                             <connections>
-                                <action selector="didTapCancelBtn:" destination="9yn-wx-8zL" id="Csb-Ib-yjD"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="JV3-sZ-kqL">
-                            <connections>
-                                <action selector="didTapDoneButton:" destination="9yn-wx-8zL" id="QFI-vD-26i"/>
+                                <action selector="done" destination="9yn-wx-8zL" id="NUe-ul-RCy"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="doneButton" destination="JV3-sZ-kqL" id="BzN-JD-Usk"/>
                         <outlet property="tableViewCellText" destination="rhD-9t-5cu" id="1s4-e1-Zsx"/>
                     </connections>
                 </tableViewController>
