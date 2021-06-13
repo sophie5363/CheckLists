@@ -10,12 +10,11 @@ import UIKit
 
 class ChecklistViewController: UITableViewController {
     
-    //MARK: - VARIABLES
+    //MARK: - PROPRIETES
 
     var tableauDeChecklistItems = [CheckListItem]()
     
     var delegate: AddItemViewControllerDelegate?
-    
     
     //MARK: - LIFECYCLE FUNCTIONS
     
@@ -47,8 +46,8 @@ extension ChecklistViewController {
     //Fonction qui permet de désélectionner une ligne sélectionnée
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let item = tableauDeChecklistItems[indexPath.row]
-        item.toggleChecked()
+//        let item = tableauDeChecklistItems[indexPath.row]
+//        item.toggleChecked()
         
         tableView.reloadRows(at: [indexPath], with: .automatic)
     }

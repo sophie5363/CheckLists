@@ -24,7 +24,10 @@ class AddItemViewController: UITableViewController, AddItemViewControllerDelegat
     
     
     
-    //MARK: - VARIABLES
+    //MARK: - PROPRIETES
+    
+    var itemToEdit: UITableViewCell
+
 
    
     
