@@ -34,7 +34,7 @@ class AddItemViewController: UITableViewController, AddItemViewControllerDelegat
     
     //MARK: - PROPRIETES
     
-//    var itemToEdit: UITableViewCell
+    var itemToEdit : String
 
 
    
@@ -42,10 +42,16 @@ class AddItemViewController: UITableViewController, AddItemViewControllerDelegat
     //MARK: - LIFECYCLE METHODS
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-    }
+//        
+//        if let itemToEdit = itemToEdit {
+//            self.title = "Edit Item"
+//            tableViewCellText.text = itemToEdit.text
+//            doneButton.isEnabled = true
+//        }
+}
     
     override func viewWillAppear(_ animated: Bool) {
         tableViewCellText.becomeFirstResponder()
@@ -72,8 +78,15 @@ class AddItemViewController: UITableViewController, AddItemViewControllerDelegat
 //        dismiss(animated: true, completion: nil)
     }
     
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ouvertureAddItemVC" {
+            let dest = segue.destination as! ChecklistViewController
+            dest.delegate = self
+        }
+        else if segue.identifier == "editItem"
+        {
             let dest = segue.destination as! ChecklistViewController
             dest.delegate = self
         }

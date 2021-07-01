@@ -7,6 +7,13 @@
 
 import UIKit
 
+//let navVC = segue.destination as! UINavigationController
+//           let destVC = navVC.topViewController as! ItemDetailViewController
+  //         destVC.delegate = self
+           
+    //       let indexPath = tableView.indexPath(for: sender as! UITableViewCell)!
+      //     destVC.itemToEdit = list.items[indexPath.row]
+
 
 class ChecklistViewController: UITableViewController {
     
@@ -15,6 +22,7 @@ class ChecklistViewController: UITableViewController {
     var tableauDeChecklistItems = [CheckListItem]()
     
     var delegate: AddItemViewControllerDelegate?
+    
     
     //MARK: - LIFECYCLE FUNCTIONS
     
@@ -27,6 +35,8 @@ class ChecklistViewController: UITableViewController {
         tableauDeChecklistItems.append(item1)
         tableauDeChecklistItems.append(item2)
         tableauDeChecklistItems.append(item3)
+        
+        
     }
     
     //MARK: IBACTIONS
@@ -84,10 +94,14 @@ extension ChecklistViewController {
     func configureCheckmark(for cell: UITableViewCell, withItem item: CheckListItem){
 
         if item.checked {
-            cell.accessoryType = .checkmark
+//            cell.accessoryType = .checkmark
+            (cell as! CheckListItemCell).labelCheckMark.isHidden = false
+            
 
         }   else {
-            cell.accessoryType = .none
+            
+            (cell as! CheckListItemCell).labelCheckMark.isHidden = true
+
         }
         
     }
@@ -121,6 +135,11 @@ extension ChecklistViewController: AddItemViewControllerDelegate {
     
     func addItemViewController(_ controller: AddItemViewController, didFinishAddingItem item: CheckListItem) {
         dismiss(animated: true, completion: nil)
+        
+    }
+    
+    
+    func addItemViewController(_ controller: AddItemViewController, didFinishEditingItem item: CheckListItem){
         
     }
     
