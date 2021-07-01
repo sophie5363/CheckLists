@@ -14,29 +14,14 @@ protocol AddItemViewControllerDelegate : AnyObject {
 }
 
 
-class AddItemViewController: UITableViewController, AddItemViewControllerDelegate {
-    func addItemViewController(_ controller: AddItemViewController, didFinishAddingItem item: CheckListItem) {
-        
-    }
-    
-    func addItemViewControllerDidCancel(_ controller: AddItemViewController) {
-        
-    }
-    
-    func addItemViewController(_ controller: AddItemViewController, didFinishEditingItem item: CheckListItem){
-        
-    }
-    
-            
+class AddItemViewController: UITableViewController {
 
-    
-    
-    
+
     //MARK: - PROPRIETES
     
-    var itemToEdit : String
+    var itemToEdit : CheckListItem?
 
-
+    var delegate : AddItemViewControllerDelegate?
    
     
     //MARK: - LIFECYCLE METHODS
@@ -45,12 +30,13 @@ class AddItemViewController: UITableViewController, AddItemViewControllerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        
-//        if let itemToEdit = itemToEdit {
-//            self.title = "Edit Item"
-//            tableViewCellText.text = itemToEdit.text
-//            doneButton.isEnabled = true
-//        }
+
+        if itemToEdit != nil {
+            self.title = "Edit Item"
+            tableViewCellText.text = itemToEdit!.text
+            doneButton.isEnabled = true
+        }
+        
 }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,24 +58,19 @@ class AddItemViewController: UITableViewController, AddItemViewControllerDelegat
     
     
     @IBAction func done() {
-        let controller = ChecklistViewController()
-        controller.delegate = self
-        print(tableViewCellText.text!)
-//        dismiss(animated: true, completion: nil)
+        if itemToEdit != nil {
+            itemToEdit?.text = tableViewCellText.text!
+            delegate?.addItemViewController(self, didFinishEditingItem: itemToEdit!)
+        }
+        else {
+            delegate?.addItemViewController(self, didFinishAddingItem: CheckListItem(text: tableViewCellText.text!, checked: false))
+        }
     }
     
     
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ouvertureAddItemVC" {
-            let dest = segue.destination as! ChecklistViewController
-            dest.delegate = self
-        }
-        else if segue.identifier == "editItem"
-        {
-            let dest = segue.destination as! ChecklistViewController
-            dest.delegate = self
-        }
+    @IBAction func cancel(_ sender: Any) {
+        delegate?.addItemViewControllerDidCancel(self)
+        
     }
     
 

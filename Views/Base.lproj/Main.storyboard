@@ -17,14 +17,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="ChecklistItem" id="puM-KL-hJB" customClass="CheckListItemCell" customModule="CheckLists" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="24.333333969116211" width="414" height="61"/>
+                                <rect key="frame" x="0.0" y="24.333333969116211" width="414" height="60.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="puM-KL-hJB" id="WvQ-3F-pVx">
-                                    <rect key="frame" x="0.0" y="0.0" width="355.66666666666669" height="61"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="355.66666666666669" height="60.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="✓" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9lc-D0-9fG">
-                                            <rect key="frame" x="5" y="20" width="15" height="21"/>
+                                            <rect key="frame" x="5" y="20" width="15" height="20.666666666666671"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="15" id="ljf-Mj-9H0"/>
                                             </constraints>
@@ -33,7 +33,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xfg-jM-Kx7">
-                                            <rect key="frame" x="28" y="30.666666666666668" width="319.66666666666669" height="0.0"/>
+                                            <rect key="frame" x="28" y="30.333333333333332" width="319.66666666666669" height="0.0"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -113,7 +113,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="Sjs-qw-3sc">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="JTv-VH-BES"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="JTv-VH-BES">
+                            <connections>
+                                <action selector="cancel:" destination="9yn-wx-8zL" id="Y8w-FN-jcR"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="done" id="JV3-sZ-kqL">
                             <connections>
                                 <action selector="done" destination="9yn-wx-8zL" id="NUe-ul-RCy"/>
@@ -127,7 +131,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bx4-Fw-dci" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2976.811594202899" y="116.51785714285714"/>
+            <point key="canvasLocation" x="1972" y="117"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Mvv-sl-w53">
@@ -161,35 +165,16 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="p5U-vW-JTC" kind="relationship" relationship="rootViewController" id="Muu-Cn-XQK"/>
+                        <segue destination="9yn-wx-8zL" kind="relationship" relationship="rootViewController" id="lqR-ed-bKo"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Byl-9n-odw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1148" y="117"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="naG-Ay-sIx">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="p5U-vW-JTC" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="DZt-vm-FzE"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="k63-lT-iN4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="9yn-wx-8zL" kind="relationship" relationship="rootViewController" destinationCreationSelector="ouvertureAddItemVC" id="Jl3-ZK-abZ"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="08c-2m-nib" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2066.666666666667" y="116.51785714285714"/>
-        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="YzO-k5-hdh"/>
+        <segue reference="o42-LW-lyg"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">

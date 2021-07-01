@@ -9,6 +9,11 @@ import UIKit
 
 class CheckListItemCell: UITableViewCell {
     
+    //MARK: - PROPRIETES
+    
+    
+    var myItem : CheckListItem?
+    
     //MARK: - IBOUTLETS
 
     @IBOutlet weak var labelCheckMark: UILabel!
@@ -25,9 +30,7 @@ class CheckListItemCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-//    func toggleChecked() {
-//
-//    }
+
     
     
 

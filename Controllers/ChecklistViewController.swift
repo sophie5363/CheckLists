@@ -23,6 +23,8 @@ class ChecklistViewController: UITableViewController {
     
     var delegate: AddItemViewControllerDelegate?
     
+    var checkListCurrentlyEdited : CheckListItem?
+    
     
     //MARK: - LIFECYCLE FUNCTIONS
     
@@ -37,6 +39,20 @@ class ChecklistViewController: UITableViewController {
         tableauDeChecklistItems.append(item3)
         
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let nav = segue.destination as! UINavigationController
+        let dest = nav.topViewController as! AddItemViewController
+                if segue.identifier == "addItem" {
+                    dest.delegate = self
+                } else if segue.identifier == "editItem" {
+                    checkListCurrentlyEdited = (sender as! CheckListItemCell).myItem
+                    dest.itemToEdit = (sender as! CheckListItemCell).myItem
+                    dest.delegate = self
+
+                }
     }
     
     //MARK: IBACTIONS
@@ -66,8 +82,7 @@ extension ChecklistViewController {
 
 
 extension ChecklistViewController {
-    
-    
+
                 //MARK: - TABLEVIEW SETTINGS
     
     //Fonction qui détermine le nombre de lignes dans la liste
@@ -85,6 +100,8 @@ extension ChecklistViewController {
         configureCheckmark(for: cell, withItem: tableauDeChecklistItems[indexPath.row])
         
         configureText(for: cell, withItem: tableauDeChecklistItems[indexPath.row])
+        
+        (cell as! CheckListItemCell).myItem = tableauDeChecklistItems[indexPath.row]
         
         return cell
         
@@ -134,13 +151,21 @@ extension ChecklistViewController: AddItemViewControllerDelegate {
     }
     
     func addItemViewController(_ controller: AddItemViewController, didFinishAddingItem item: CheckListItem) {
+        self.tableauDeChecklistItems.append(item)
         dismiss(animated: true, completion: nil)
+        self.tableView.reloadData()
         
     }
     
     
     func addItemViewController(_ controller: AddItemViewController, didFinishEditingItem item: CheckListItem){
         
+        let itemRow = tableauDeChecklistItems.firstIndex { (val) -> Bool in
+                    val === checkListCurrentlyEdited
+                }
+        tableauDeChecklistItems[itemRow!] = item
+        dismiss(animated: true, completion: nil)
+        self.tableView.reloadData()
     }
     
 }
