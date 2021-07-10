@@ -9,8 +9,8 @@ import Foundation
 
 class Checklist {
     
-    var name: String
-    var items: [CheckListItem]
+    public var name: String
+    public var items: [CheckListItem]
     
     init (name: String, items: [CheckListItem]?) {
         self.name = name
