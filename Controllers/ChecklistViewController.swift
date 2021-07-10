@@ -15,15 +15,38 @@ import UIKit
       //     destVC.itemToEdit = list.items[indexPath.row]
 
 
-class ChecklistViewController: UITableViewController {
+class ChecklistViewController: UITableViewController, Codable {
     
     //MARK: - PROPRIETES
 
     var tableauDeChecklistItems = [CheckListItem]()
     
-    var delegate: AddItemViewControllerDelegate?
+    var delegate: ItemDetailViewControllerDelegate?
     
     var checkListCurrentlyEdited : CheckListItem?
+    
+    var documentDirectory: URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+            let documentsDirectory = paths[0]
+            return documentsDirectory
+    }
+    
+    var dataFileUrl: URL {
+        let fm = FileManager.default
+        let urls = fm.urls(for: .documentDirectory, in: .userDomainMask)
+        if let url = urls.first {
+            var fileURL = url.appendingPathComponent("CheckLists")
+            fileURL = fileURL.appendingPathExtension("json")
+            return fileURL
+        }
+//        return url
+    }
+    
+    required init?(coder: NSCoder) {
+        //do sthg
+    }
+    
+    
     
     
     //MARK: - LIFECYCLE FUNCTIONS
@@ -41,10 +64,14 @@ class ChecklistViewController: UITableViewController {
         
     }
     
+    override func awakeFromNib() {
+        // do sthg
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let nav = segue.destination as! UINavigationController
-        let dest = nav.topViewController as! AddItemViewController
+        let dest = nav.topViewController as! ItemDetailViewController
                 if segue.identifier == "addItem" {
                     dest.delegate = self
                 } else if segue.identifier == "editItem" {
@@ -77,6 +104,21 @@ extension ChecklistViewController {
         
         tableView.reloadRows(at: [indexPath], with: .automatic)
     }
+    
+}
+
+
+//MARK: - HELPERS
+
+func saveChecklistItems() {
+    
+}
+
+func loadCheckListItems() {
+    
+}
+
+func loadCheckListItems() {
     
 }
 
@@ -144,13 +186,13 @@ extension ChecklistViewController {
     
 }
 
-extension ChecklistViewController: AddItemViewControllerDelegate {
-    func addItemViewControllerDidCancel(_ controller: AddItemViewController) {
+extension ChecklistViewController: ItemDetailViewControllerDelegate {
+    func ItemDetailViewControllerDidCancel(_ controller: ItemDetailViewController) {
         dismiss(animated: true, completion: nil)
         
     }
     
-    func addItemViewController(_ controller: AddItemViewController, didFinishAddingItem item: CheckListItem) {
+    func ItemDetailViewController(_ controller: ItemDetailViewController, didFinishAddingItem item: CheckListItem) {
         self.tableauDeChecklistItems.append(item)
         dismiss(animated: true, completion: nil)
         self.tableView.reloadData()
@@ -158,7 +200,7 @@ extension ChecklistViewController: AddItemViewControllerDelegate {
     }
     
     
-    func addItemViewController(_ controller: AddItemViewController, didFinishEditingItem item: CheckListItem){
+    func ItemDetailViewController(_ controller: ItemDetailViewController, didFinishEditingItem item: CheckListItem){
         
         let itemRow = tableauDeChecklistItems.firstIndex { (val) -> Bool in
                     val === checkListCurrentlyEdited

@@ -1,5 +1,5 @@
 //
-//  AddItemViewController.swift
+//  ItemDetailViewController.swift
 //  CheckLists
 //
 //  Created by Sophie Jacquot  on 01/04/2021.
@@ -7,21 +7,21 @@
 
 import UIKit
 
-protocol AddItemViewControllerDelegate : AnyObject {
-    func addItemViewControllerDidCancel(_ controller: AddItemViewController)
-    func addItemViewController(_ controller: AddItemViewController, didFinishAddingItem item: CheckListItem)
-    func addItemViewController(_ controller: AddItemViewController, didFinishEditingItem item: CheckListItem)
+protocol ItemDetailViewControllerDelegate : AnyObject {
+    func ItemDetailViewControllerDidCancel(_ controller: ItemDetailViewController)
+    func ItemDetailViewController(_ controller: ItemDetailViewController, didFinishAddingItem item: CheckListItem)
+    func ItemDetailViewController(_ controller: ItemDetailViewController, didFinishEditingItem item: CheckListItem)
 }
 
 
-class AddItemViewController: UITableViewController {
+class ItemDetailViewController: UITableViewController {
 
 
     //MARK: - PROPRIETES
     
     var itemToEdit : CheckListItem?
 
-    var delegate : AddItemViewControllerDelegate?
+    var delegate : ItemDetailViewControllerDelegate?
    
     
     //MARK: - LIFECYCLE METHODS
@@ -60,16 +60,16 @@ class AddItemViewController: UITableViewController {
     @IBAction func done() {
         if itemToEdit != nil {
             itemToEdit?.text = tableViewCellText.text!
-            delegate?.addItemViewController(self, didFinishEditingItem: itemToEdit!)
+            delegate?.ItemDetailViewController(self, didFinishEditingItem: itemToEdit!)
         }
         else {
-            delegate?.addItemViewController(self, didFinishAddingItem: CheckListItem(text: tableViewCellText.text!, checked: false))
+            delegate?.ItemDetailViewController(self, didFinishAddingItem: CheckListItem(text: tableViewCellText.text!, checked: false))
         }
     }
     
     
     @IBAction func cancel(_ sender: Any) {
-        delegate?.addItemViewControllerDidCancel(self)
+        delegate?.ItemDetailViewControllerDidCancel(self)
         
     }
     
@@ -77,7 +77,7 @@ class AddItemViewController: UITableViewController {
 }
 
 
-extension AddItemViewController : UITextFieldDelegate{
+extension ItemDetailViewController : UITextFieldDelegate{
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let oldText = textField.text!
         let newString = oldText.replacingCharacters(in: Range(range, in: oldText)!, with: string)
