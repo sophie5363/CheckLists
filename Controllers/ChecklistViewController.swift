@@ -31,20 +31,20 @@ class ChecklistViewController: UITableViewController {
             return documentsDirectory
     }
     
-    var dataFileUrl: URL {
-        let fm = FileManager.default
-        let urls = fm.urls(for: .documentDirectory, in: .userDomainMask)
-        if let url = urls.first {
-            var fileURL = url.appendingPathComponent("CheckLists")
-            fileURL = fileURL.appendingPathExtension("json")
-            return fileURL
-        }
-//        return url
-    }
-    
-    required init?(coder: NSCoder) {
-        //do sthg
-    }
+//    var dataFileUrl: URL {
+//        let fm = FileManager.default
+//        let urls = fm.urls(for: .documentDirectory, in: .userDomainMask)
+//        if let url = urls.first {
+//            var fileURL = url.appendingPathComponent("CheckLists")
+//            fileURL = fileURL.appendingPathExtension("json")
+//            return fileURL
+//        }
+////        return url
+//    }
+//
+//    required init?(coder: NSCoder) {
+//        //do sthg
+//    }
     
     
     
