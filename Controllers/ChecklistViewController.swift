@@ -15,7 +15,7 @@ import UIKit
       //     destVC.itemToEdit = list.items[indexPath.row]
 
 
-class ChecklistViewController: UITableViewController, Codable {
+class ChecklistViewController: UITableViewController {
     
     //MARK: - PROPRIETES
 
@@ -118,9 +118,6 @@ func loadCheckListItems() {
     
 }
 
-func loadCheckListItems() {
-    
-}
 
 
 extension ChecklistViewController {

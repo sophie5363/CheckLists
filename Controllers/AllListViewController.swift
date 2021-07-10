@@ -9,16 +9,19 @@ import UIKit
 
 class AllListViewController: UIViewController {
     
+
+    @IBOutlet weak var nameOfTheList: UINavigationItem!
+    
     //MARK: - PROPRIETES
     
     
     
-    var lists : Checklist
+    var lists : Checklist?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        lists = 
+
 
         // Do any additional setup after loading the view.
     }
